@@ -63,3 +63,49 @@ $button-text-color: white; // Default text color
     }
 }
 ```
+
+## icon button
+
+- edit
+- trash
+
+```ts
+import React from 'react';
+import styles from './icon-button.module.scss';
+
+type IconButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  icon: string;
+  color?: string;
+  className?: string;
+};
+
+const IconButton: React.FC<IconButtonProps> = ({ icon, color , className = '', ...props }) => {
+  return (
+    <button style={ { color: color  } } className={`${styles.icon_button} ${className}`} {...props}>
+      <i className={`bx ${icon}`}></i>
+    </button>
+  );
+};
+
+export default IconButton;
+```
+```scss
+.icon_button {
+    all: unset;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+
+    i {
+        font-size: 1.5rem;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+}
+```
