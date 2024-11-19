@@ -110,3 +110,40 @@ export default IconButton;
 
 }
 ```
+
+## dynamic field
+
+```ts
+"use client"
+import React, { useEffect, useState } from 'react'
+import IconButton from './icon-buttom';
+
+interface InputFieldProps {
+    edit?: () => void;
+    delete?: () => void;
+}
+
+const InputField = (props: InputFieldProps) => {
+    const [update, setUpdate] = useState(false);
+
+    return (
+        <div>
+            <input type="text" placeholder="Enter your name" disabled={update} />
+            {props.edit && <IconButton icon={`bx-${update ? 'save' : 'edit'}`} onClick={
+                () => {
+                    if (update) {
+                        props.edit && props.edit();
+                        console.log('Save');
+                    }
+                    setUpdate(!update);
+                }
+            } />}
+            {props.delete && <IconButton icon='bx-trash' onClick={props.delete} />}
+        </div>
+
+
+    )
+}
+
+export default InputField;
+```
