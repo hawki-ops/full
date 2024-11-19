@@ -67,6 +67,7 @@ $button-text-color: white; // Default text color
 ## icon button
 
 - edit
+- save
 - trash
 
 ```ts
